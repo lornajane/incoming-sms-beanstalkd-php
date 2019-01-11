@@ -1,0 +1,9 @@
+{
+    "require": {
+        "slim/slim": "^3.11",
+        "pda/pheanstalk": "^3.2"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^2.5"
+    }
+}
