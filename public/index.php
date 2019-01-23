@@ -13,8 +13,9 @@ require __DIR__ . '/../config.php';
 $app->get('/webhooks/inbound-sms', function ($request, $response, $args) {
     $params = $request->getQueryParams();
 
-    $data = ["event" => "message", "text" => $params['text'], "receivedAt" => date("U")];
-    error_log(print_r($data, true));
+    $data = ["event" => "message", "text" => $params['text'],
+        "receivedAt" => date("U"), "payload" => $params];
+    error_log("New message: " . $params['text']);
     $this->queue->useTube('sms')
         ->put(json_encode($data));
 });
